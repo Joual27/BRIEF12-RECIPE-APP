@@ -13,13 +13,17 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('recipesOfCategory', function (Blueprint $table) {
-            $table->foreignId('recipe_id')->constrained('recipe');
-            $table->foreignId('category_id')->constrained('category');
-            $table->primary(['recipe_id','category_id']);   
+        Schema::create('recipes', function (Blueprint $table) {
+            $table->id();
+            $table->string('name');
+            $table->string('instructions');
+            $table->string('image');
+            $table->unsignedBigInteger('category_id');
+            $table->foreign('category_id')->references('id')->on('categories');
             $table->timestamps();
         });
     }
+
     /**
      * Reverse the migrations.
      *
@@ -27,6 +31,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('recipesOfCategory');
+        Schema::dropIfExists('recipe');
     }
 };

@@ -20,5 +20,9 @@ Route::post('/login', [\App\Http\Controllers\Pages::class, 'login'])->name('logi
 Route::post('/register', [\App\Http\Controllers\Pages::class, 'register'])->name('register');
 Route::get('/dashboard',[\App\Http\Controllers\Pages::class,'dashboard'])->name('dashboard');
 
+Route::get('/add',[\App\Http\Controllers\RecipeController::class,'create'])->name('add');
+Route::post('/add',[\App\Http\Controllers\RecipeController::class,'create'])->name('addRecipe');
+
+
 
 
